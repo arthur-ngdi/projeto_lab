@@ -1,17 +1,19 @@
 import pytest
-from projeto import calcular_imc, classificar_imc
+from IMC_Project.projeto import calcular_imc, classificar_imc
  
  #------TESTES DE SUCESSO------
-@pytest.mark.parametrize("pessoa", [
-    {"nome": "pessoa1", "peso": 50, "altura": 1.60, "imc": 19.53},  
-    {"nome": "pessoa2", "peso": 70, "altura": 1.75, "imc": 22.86},  
-    {"nome": "pessoa3", "peso": 80  , "altura": 1.70, "imc": 27.68},  
-    {"nome": "pessoa4", "peso": 30  , "altura": 1.70, "imc": 10.38},  
-    {"nome": "pessoa5", "peso": 90  , "altura": 1.70, "imc": 31.14},  
-])
+# @pytest.mark.parametrize("pessoa", [
+#     {"nome": "pessoa1", "peso": 50, "altura": 1.60, "imc": 19.53},  
+#     {"nome": "pessoa2", "peso": 70, "altura": 1.75, "imc": 22.86},  
+#     {"nome": "pessoa3", "peso": 80  , "altura": 1.70, "imc": 27.68},  
+#     {"nome": "pessoa4", "peso": 30  , "altura": 1.70, "imc": 10.38},  
+#     {"nome": "pessoa5", "peso": 90  , "altura": 1.70, "imc": 31.14},  
+# ])
+pessoa = {'peso': 84, 'altura': 1.75}
+
 def test_calcular_imc_sucesso(pessoa):
-    peso = pessoa["peso"]
-    altura = pessoa["altura"]
+    peso = pessoa.peso
+    altura = pessoa.altura
     assert calcular_imc(peso,altura) == pessoa["imc"]
     if "Peso normal" in classificar_imc(pessoa["imc"]):
         assert classificar_imc(pessoa["imc"]) == "Peso normal"

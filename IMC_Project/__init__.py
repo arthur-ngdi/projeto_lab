@@ -1,0 +1,1 @@
+from .projeto import calcular_imc, classificar_imc
